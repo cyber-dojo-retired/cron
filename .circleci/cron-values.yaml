@@ -1,0 +1,47 @@
+# Default values for cyber-dojo-service.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+fullnameOverride: "cron"
+
+daemonSet: true
+
+volumes:
+  - name: cron-tmp-dir
+    emptyDir:
+      medium: Memory
+      sizeLimit: "32Mi"
+
+service:
+  port: 5027
+
+containers:
+  - name: cron
+    image: cyberdojo/cron
+    tag: ""
+    securityContext:
+      readOnlyRootFilesystem: true
+    volumeMounts:
+      - name: cron-tmp-dir
+        mountPath: /tmp
+        readOnly: false
+
+    resources:
+      limits:
+       memory: 128Mi
+      requests:
+       memory: 128Mi
+    # livenessProbe:
+    #   path: /sha
+    #   port: 5027
+    # readinessProbe:
+    #   path: /ready?
+    #   port: 5027
+
+envFromSecret: {}
+
+nodeSelector: {}
+
+affinity: {}
+
+tolerations: []

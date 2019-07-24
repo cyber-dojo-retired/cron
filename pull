@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+# This file is run as a cron job and cannot have an extension.
+# Viz it must be called pull and not, say, pull.sh
+
+echo 'Hello from cron' >> /etc/periodic/1min/log.pull

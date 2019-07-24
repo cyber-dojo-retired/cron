@@ -1,5 +1,4 @@
 #!/bin/sh
-# https://serverfault.com/questions/85893/running-a-cron-job-manually-and-immediately/85906
 
 # Use
 #    run-as-cron <command>

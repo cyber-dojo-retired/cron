@@ -5,5 +5,3 @@
 #-----!Except these files
 
 !pull
-!cron-env
-!run-as-cron

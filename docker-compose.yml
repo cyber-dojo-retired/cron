@@ -2,11 +2,13 @@
 version: '2.2'
 
 services:
-  collector:
-    image: cyberdojo/cron
-    init: true
-    container_name: test-cron-server
+  cron:
     build:
       context: .
       args:
         SHA: ${SHA}
+    image: cyberdojo/cron
+    init: true
+    container_name: test-cron-server
+    volumes:
+      - ./test_server/home:/home:ro

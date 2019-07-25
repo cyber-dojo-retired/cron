@@ -7,8 +7,54 @@ services:
       context: .
       args:
         SHA: ${SHA}
+    user: root
     image: cyberdojo/cron
     init: true
     container_name: test-cron-server
     volumes:
       - ./test_server/home:/home:ro
+
+  # - - - - - - - - - - - - - - - -
+  puller:
+    user: root
+    image: cyberdojo/puller
+    ports:
+      - 5017:5017
+    init: true
+    container_name: test-cron-puller
+    environment:
+      - NO_PROMETHEUS
+    read_only: true
+    tmpfs:
+      - /tmp:exec,mode=1777
+    restart: 'no'
+    volumes:
+      - ./test_server:/app/test:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - custom
+      - languages
+
+  # - - - - - - - - - - - - - - - -
+  custom:
+    user: nobody
+    image: ${CYBER_DOJO_CUSTOM}
+    init: true
+    container_name: test-cron-custom
+    read_only: true
+    ports:
+      - 4526:4526
+    tmpfs: /tmp
+    restart: 'no'
+
+  # - - - - - - - - - - - - - - - -
+  languages:
+    user: nobody
+    image: ${CYBER_DOJO_LANGUAGES}
+    init: true
+    container_name: test-cron-languages
+    read_only: true
+    ports:
+      - 4524:4524
+    tmpfs: /tmp
+    restart: 'no'

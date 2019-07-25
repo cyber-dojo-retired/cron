@@ -4,4 +4,9 @@ set -e
 # This file is run as a cron job and cannot have an extension.
 # Viz it must be called pull and not, say, pull.sh
 
-echo 'Hello from cron' >> /tmp/pull.log
+wget --quiet \
+  -O- \
+  --post-data='{}' \
+  --header='Content-Type:application/json' \
+  http://puller:5017/pull \
+  | tee /tmp/pull.log

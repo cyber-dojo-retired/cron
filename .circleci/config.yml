@@ -9,6 +9,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Curl cyber-dojo script
+          command: |
+            set -e
+            curl --silent --fail https://raw.githubusercontent.com/cyber-dojo/commander/master/cyber-dojo \
+              -o /tmp/cyber-dojo
+            chmod 700 /tmp/cyber-dojo      
+      - run:
           name: Build tested docker image
           command: |
             set -e

@@ -11,10 +11,8 @@ docker run --rm \
 set -a
 . /tmp/versioner.web.env
 set +a
-# Use languages-small as its smaller than languages-common
-CDL=${CYBER_DOJO_LANGUAGES}
-export CYBER_DOJO_LANGUAGES=${CDL/common/small}
 
 "${SH_DIR}/build_docker_images.sh"
+"${SH_DIR}/build_start_point_images.sh"
 "${SH_DIR}/docker_containers_up.sh"
-#"${SH_DIR}/test.sh"
+"${SH_DIR}/run_test_inside_container.sh"

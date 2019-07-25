@@ -12,7 +12,7 @@ services:
     init: true
     container_name: test-cron-server
     volumes:
-      - ./test_server/home:/home:ro
+      - ./test_server:/test:ro
 
   # - - - - - - - - - - - - - - - -
   puller:

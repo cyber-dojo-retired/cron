@@ -3,10 +3,14 @@ set -e
 
 # This file is run as a cron job and cannot have an extension.
 # Viz it must be called pull and not, say, pull.sh
+# Pipe it to a file (atomically) for testing.
 
-wget --quiet \
+wget \
   -O- \
-  --post-data='{}' \
   --header='Content-Type:application/json' \
+  --post-data='{}' \
+  --quiet \
   http://puller:5017/pull \
-  | tee /tmp/pull.log
+  > /tmp/pull.log.tmp
+
+mv /tmp/pull.log.tmp /tmp/pull.log

@@ -26,9 +26,9 @@ curl_poke()
 }
 
 # - - - - - - - - - - - - - - - - - - - - - - -
-check_csharp_nunit_image()
+check_image()
 {
-  local -r image_name=cyberdojofoundation/csharp_nunit
+  local -r image_name=cyberdojofoundation/${2}
   if docker image ls | grep --quiet ${image_name}; then
     echo "$1 ${image_name} IS present"
   else
@@ -40,6 +40,13 @@ check_csharp_nunit_image()
 curl_poke 4526 image_names custom
 curl_poke 4524 image_names languages
 
-check_csharp_nunit_image Before:
+docker rmi cyberdojofoundation/ruby_rspec     > /dev/null || true
+docker rmi cyberdojofoundation/ruby_mini_test > /dev/null || true
+
+check_image Before: ruby_rspec
+check_image Before: ruby_mini_test
+
 docker exec -it test-cron-server sh -c '/test/test_cron.sh'
-check_csharp_nunit_image After:
+
+check_image  After: ruby_rspec
+check_image  After: ruby_mini_test

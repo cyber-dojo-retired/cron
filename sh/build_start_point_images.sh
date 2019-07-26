@@ -67,7 +67,7 @@ build_image_script_name()
 
 create_start_point_git_repo_in_TMP_DIR()
 {
-  cp -R ${ROOT_DIR}/test_data ${TMP_DIR}
+  cp -R ${ROOT_DIR}/test_data/start_points/$1 ${TMP_DIR}
   cd ${TMP_DIR}
   git init > /dev/null
   git config --global user.email 'cron@cyber-dojo.org'
@@ -80,7 +80,7 @@ create_start_point_git_repo_in_TMP_DIR()
 build_test_cron_custom_tiny_image()
 {
   make_TMP_DIR
-  create_start_point_git_repo_in_TMP_DIR
+  create_start_point_git_repo_in_TMP_DIR ruby_mini_test
   echo
   echo Building "${CYBER_DOJO_CUSTOM}"
   "$(build_image_script_name)"    \
@@ -95,7 +95,7 @@ build_test_cron_custom_tiny_image()
 build_test_cron_languages_tiny_image()
 {
   make_TMP_DIR
-  create_start_point_git_repo_in_TMP_DIR
+  create_start_point_git_repo_in_TMP_DIR ruby_rspec
   echo
   echo "Building ${CYBER_DOJO_LANGUAGES}"
   "$(build_image_script_name)"     \

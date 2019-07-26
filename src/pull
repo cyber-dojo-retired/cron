@@ -7,11 +7,17 @@ set -e
 
 echo "Cron'd pull script about to run..." > /tmp/pull.log.about-to-run
 
-wget \
-  -O- \
-  --header='Content-Type:application/json' \
-  --post-data='{}' \
-  --quiet \
+#wget \
+#  -O- \
+#  --header='Content-Type:application/json' \
+#  --post-data='{}' \
+#  --quiet \
+#  http://puller:5017/pull \
+#  > /tmp/pull.log.tmp
+
+curl \
+  --header "Content-Type: application/json" \
+  --data '{}' \
   http://puller:5017/pull \
   > /tmp/pull.log.tmp
 

@@ -11,6 +11,8 @@ docker run --rm \
 set -a
 . /tmp/versioner.web.env
 set +a
+export CYBER_DOJO_CUSTOM=cyberdojo/cron_custom_tiny
+export CYBER_DOJO_LANGUAGES=cyberdojo/cron_languages_tiny
 
 "${SH_DIR}/build_docker_images.sh"
 "${SH_DIR}/build_start_point_images.sh"

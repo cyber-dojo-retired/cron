@@ -38,7 +38,7 @@ services:
   # - - - - - - - - - - - - - - - -
   custom:
     user: nobody
-    image: cyberdojo/custom_tiny
+    image: ${CYBER_DOJO_CUSTOM}
     init: true
     container_name: test-cron-custom
     read_only: true
@@ -50,7 +50,7 @@ services:
   # - - - - - - - - - - - - - - - -
   languages:
     user: nobody
-    image: cyberdojo/languages_tiny
+    image: ${CYBER_DOJO_LANGUAGES}
     init: true
     container_name: test-cron-languages
     read_only: true

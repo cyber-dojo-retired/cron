@@ -69,7 +69,9 @@ create_csharp_nunit_git_repo_in_TMP_DIR()
 {
   cp -R ${ROOT_DIR}/test_data/csharp_nunit_start_point ${TMP_DIR}
   cd ${TMP_DIR}
-  git init
+  git init > /dev/null
+  git config --global user.email 'cron@cyber-dojo.org'
+  git config --global user.name 'cron'
   git add .
   git commit --quiet --message='only commit'
 }

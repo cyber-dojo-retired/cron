@@ -87,5 +87,6 @@ docker-compose \
 
 wait_until_running test-cron-puller 5017
 
-wait_until_ready  custom   4526
+wait_until_ready custom    4526
 wait_until_ready languages 4524
+wait_until_ready puller    5017

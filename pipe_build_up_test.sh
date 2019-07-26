@@ -10,11 +10,15 @@ docker run --rm \
       > /tmp/versioner.web.env
 set -a
 . /tmp/versioner.web.env
+set +a
 export CYBER_DOJO_PULLER_TAG=${CYBER_DOJO_PULLER_SHA:0:7}
 echo "puller ${CYBER_DOJO_PULLER_SHA} cyberdojo/puller:${CYBER_DOJO_PULLER_TAG}"
-set +a
 
 "${SH_DIR}/build_docker_images.sh"
 "${SH_DIR}/build_start_point_images.sh"
 "${SH_DIR}/docker_containers_up.sh"
-"${SH_DIR}/run_test_inside_container.sh"
+if "${SH_DIR}/run_tests_in_container.sh" ; then
+  "${SH_DIR}/docker_containers_down.sh"
+else
+  exit 3
+fi

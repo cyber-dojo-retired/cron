@@ -47,7 +47,7 @@ setup_pull_as_1min_cronjob()
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 wait_till_1min_cronjob_boundary_ticks_over()
 {
-  SECS=$((60 - $(date +%S) + 1))
+  SECS=$(date +%-S) # Need - in %-S to remove leading zero (eg in 08)
   echo -n "waiting till minute boundary ticks over in ${SECS} seconds"
   dotted_wait ${SECS}
 }

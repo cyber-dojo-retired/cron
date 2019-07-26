@@ -82,6 +82,7 @@ build_test_custom_tiny_image()
   make_TMP_DIR
   create_csharp_nunit_git_repo_in_TMP_DIR
   echo
+  $(build_image_script_name) version
   echo Building cyberdojo/custom_tiny
   "$(build_image_script_name)"    \
     start-point create            \
@@ -89,6 +90,8 @@ build_test_custom_tiny_image()
         --custom                  \
           "file://${TMP_DIR}"
   remove_TMP_DIR
+  echo "BASE_SHA:$(docker run --rm cyberdojo/custom_tiny sh -c 'echo ${BASE_SHA}')"
+  echo "     SHA:$(docker run --rm cyberdojo/custom_tiny sh -c 'echo ${SHA}')"
 }
 
 # - - - - - - - - - - - - - - - - -
@@ -97,6 +100,7 @@ build_test_languages_tiny_image()
   make_TMP_DIR
   create_csharp_nunit_git_repo_in_TMP_DIR
   echo
+  $(build_image_script_name) version
   echo Building cyberdojo/languages_tiny
   "$(build_image_script_name)"     \
     start-point create             \
@@ -104,6 +108,8 @@ build_test_languages_tiny_image()
         --languages                \
           "file://${TMP_DIR}"
   remove_TMP_DIR
+  echo "BASE_SHA:$(docker run --rm cyberdojo/languages_tiny sh -c 'echo ${BASE_SHA}')"
+  echo "     SHA:$(docker run --rm cyberdojo/languages_tiny sh -c 'echo ${SHA}')"  
 }
 
 # - - - - - - - - - - - - - - - - -

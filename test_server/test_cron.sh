@@ -60,6 +60,7 @@ wait_at_most_60_seconds_for_1min_pull_to_write_its_log_file()
   max_wait_secs=60
   file_wait ${pull_log_file} ${max_wait_secs} || {
     echo "pull log file file missing after waiting for ${max_wait_secs} seconds: ${pull_log_file}"
+    ls -al /tmp
     exit 3
   }
 }

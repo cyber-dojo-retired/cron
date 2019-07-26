@@ -82,7 +82,7 @@ build_test_cron_custom_tiny_image()
   make_TMP_DIR
   create_csharp_nunit_git_repo_in_TMP_DIR
   echo
-  echo Building cyberdojo/custom_tiny
+  echo Building "${CYBER_DOJO_CUSTOM}"
   "$(build_image_script_name)"    \
     start-point create            \
       ${CYBER_DOJO_CUSTOM}        \
@@ -97,7 +97,7 @@ build_test_cron_languages_tiny_image()
   make_TMP_DIR
   create_csharp_nunit_git_repo_in_TMP_DIR
   echo
-  echo Building cyberdojo/languages_tiny
+  echo "Building ${CYBER_DOJO_LANGUAGES}"
   "$(build_image_script_name)"     \
     start-point create             \
       ${CYBER_DOJO_LANGUAGES}      \

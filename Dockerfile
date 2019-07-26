@@ -1,8 +1,6 @@
 FROM alpine:latest
 LABEL maintainer=jon@jaggersoft.com
 
-#RUN apk --no-cache add curl
-
 ARG SHA
 ENV SHA=${SHA}
 

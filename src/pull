@@ -13,10 +13,4 @@ wget \
   http://puller:5017/pull \
   > /tmp/pull.log.tmp
 
-#curl \
-#  --header "Content-Type: application/json" \
-#  --data '{}' \
-#  http://puller:5017/pull \
-#  > /tmp/pull.log.tmp
-
 mv /tmp/pull.log.tmp /tmp/pull.log

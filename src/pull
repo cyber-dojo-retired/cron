@@ -5,20 +5,18 @@ set -e
 # Viz it must be called pull and not, say, pull.sh
 # Pipe it to a file (atomically) for testing.
 
-echo "Cron'd pull script about to run..." > /tmp/pull.log.about-to-run
-
-#wget \
-#  -O- \
-#  --header='Content-Type:application/json' \
-#  --post-data='{}' \
-#  --quiet \
-#  http://puller:5017/pull \
-#  > /tmp/pull.log.tmp
-
-curl \
-  --header "Content-Type: application/json" \
-  --data '{}' \
+wget \
+  -O- \
+  --header='Content-Type:application/json' \
+  --post-data='{}' \
+  --quiet \
   http://puller:5017/pull \
   > /tmp/pull.log.tmp
+
+#curl \
+#  --header "Content-Type: application/json" \
+#  --data '{}' \
+#  http://puller:5017/pull \
+#  > /tmp/pull.log.tmp
 
 mv /tmp/pull.log.tmp /tmp/pull.log

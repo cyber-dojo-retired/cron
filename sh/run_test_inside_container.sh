@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+# - - - - - - - - - - - - - - - - - - - - - - -
 ip_address()
 {
   if [ -n "${DOCKER_MACHINE_NAME}" ]; then
@@ -10,6 +11,7 @@ ip_address()
   fi
 }
 
+# - - - - - - - - - - - - - - - - - - - - - - -
 curl_poke()
 {
   local -r port=${1}
@@ -23,8 +25,21 @@ curl_poke()
   echo
 }
 
+# - - - - - - - - - - - - - - - - - - - - - - -
+check_csharp_nunit_image()
+{
+  local -r image_name=cyberdojofoundation/csharp_nunit
+  if docker image ls | grep --quiet ${image_name}; then
+    echo "$1 ${image_name} IS present"
+  else
+    echo "$1 ${image_name} is NOT present"
+  fi
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - -
 curl_poke 4526 image_names custom
 curl_poke 4524 image_names languages
-curl_poke 5017 pull puller
 
+check_csharp_nunit_image Before:
 docker exec -it test-cron-server sh -c '/test/test_cron.sh'
+check_csharp_nunit_image After:

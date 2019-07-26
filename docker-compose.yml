@@ -17,7 +17,7 @@ services:
   # - - - - - - - - - - - - - - - -
   puller:
     user: root
-    image: cyberdojo/puller
+    image: cyberdojo/puller:${CYBER_DOJO_PULLER_TAG}
     ports:
       - 5017:5017
     init: true

@@ -10,6 +10,8 @@ docker run --rm \
       > /tmp/versioner.web.env
 set -a
 . /tmp/versioner.web.env
+export CYBER_DOJO_PULLER_TAG=${CYBER_DOJO_PULLER_SHA:0:7}
+echo "puller ${CYBER_DOJO_PULLER_SHA} cyberdojo/puller:${CYBER_DOJO_PULLER_TAG}"
 set +a
 
 "${SH_DIR}/build_docker_images.sh"

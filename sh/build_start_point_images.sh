@@ -70,8 +70,8 @@ create_start_point_git_repo_in_TMP_DIR()
   cp -R ${ROOT_DIR}/test_data/start_points/$1 ${TMP_DIR}
   cd ${TMP_DIR}
   git init > /dev/null
-  git config --global user.email 'cron@cyber-dojo.org'
-  git config --global user.name 'cron'
+  git config user.email 'cron@cyber-dojo.org'
+  git config user.name 'cron'
   git add .
   git commit --quiet --message='only commit'
 }

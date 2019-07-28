@@ -11,6 +11,6 @@ wget \
   --post-data='{}' \
   --quiet \
   http://puller:5017/pull \
-  > /tmp/pull.log.tmp
+  | jq . > /tmp/pull.log.tmp
 
 mv /tmp/pull.log.tmp /tmp/pull.log

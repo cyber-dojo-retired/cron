@@ -1,1 +1,6 @@
-{"pull":["cyberdojofoundation/ruby_mini_test","cyberdojofoundation/ruby_rspec"]}
+{
+  "pull": [
+    "cyberdojofoundation/ruby_mini_test",
+    "cyberdojofoundation/ruby_rspec"
+  ]
+}

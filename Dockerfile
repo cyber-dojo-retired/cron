@@ -1,6 +1,8 @@
 FROM alpine:latest
 LABEL maintainer=jon@jaggersoft.com
 
+RUN apk add --no-cache jq
+
 ARG SHA
 ENV SHA=${SHA}
 

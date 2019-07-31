@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM cyberdojo/ruby-base:latest
 LABEL maintainer=jon@jaggersoft.com
 
 RUN apk add --no-cache jq
